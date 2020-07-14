@@ -1,0 +1,286 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>ComputingTheGraphics</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" type="image/png" href="images/usingIcon.png">
+		<!-- ads -->
+		<!-- <script data-ad-client="ca-pub-1164050131653437" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+		<!-- search -->
+		<script src="https://cdn.jsdelivr.net/gh/nextapps-de/flexsearch@master/dist/flexsearch.min.js"></script>
+		<!-- jquery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<!-- my handlers -->
+		<script src="data.js"></script>
+		<script src="assets/myjs/scraperJs.js"></script>
+		<script src="assets/myjs/mainJs.js"></script>
+		<script src="assets/myjs/form.js"></script>
+		<!-- post not included here!!!! -->
+		<!-- math -->
+	    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
+		<!-- <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
+	</head>
+	<body class="is-preload" onload="urlUpdated()">
+
+		<!-- Wrapper -->
+		<div id="wrapper">
+			<!-- Main -->
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+						<h2><strong>ComputingTheGraphics</strong></h2>
+					</header>
+					<form name="webpagesearchbar" action="" id="searchInput" method="get" style="display: none;">
+						<section>
+							<br/>
+							<br/>
+							<h4>Searching Content for...</h4>
+						 	<input type="text" id="searchtext" name="searchtext" placeholder="Search..." onkeypress="return search(this.value)"><br>
+						 	<p id="searchoutput">
+							</p>
+						</section>
+					</form>
+					<section>
+						<div class="iframe-container">
+							<iframe id="mainloader" src="" marginheight="0" scrolling=yes onload="setIframeHeight(this.id)"></iframe>
+						</div>
+					</section>
+				</div>
+			</div>
+
+			<!-- Sidebar -->
+			<div id="sidebar">
+				<div class="inner">
+					<!-- Search -->
+					<section id="search" class="alt">
+						<form name="sidesearchbar" action="" id="searchInput" method="get">
+						 	<input type="text" id="searchtext" name="searchtext" placeholder="Search..."><br>
+						</form>
+					</section>
+
+					<!-- Menu -->
+					<nav id="menu">
+						<h4>Posts</h4>
+						<ul>
+							<li>
+								<span class="opener">Overview</span>
+								<ul>
+									<li><a href="javascript:void(0)"
+										onclick="goToPage('welcome')">Welcome</a>
+									</li>
+									<li><a href="javascript:void(0)"
+										onclick="goToPage('intro_to_cg')">Introduction to Computer Graphics</a>
+									</li>
+									<li><a href="javascript:void(0)"
+										onclick="goToPage('light_and_color')">Light and Color</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<span class="opener">Useful Math</span>
+								<ul>
+									<li><a href="javascript:void(0)"
+										onclick="goToPage('trigonometry')">Trigonometry Basics</a>
+									</li>
+									<li><a href="javascript:void(0)"
+										onclick="goToPage('la_basics')">Linear Algebra Basics</a>
+									</li>
+									<li><a href="javascript: void(0)"
+										onclick="goToPage('calc_basics')">Calculus Basics</a>
+									</li>
+									<li><a href="javascript:void(0)"
+										onclick="goToPage('trans_matrices')">Transformation Matrices</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<span class="opener">Camera</span>
+								<ul>
+									<li><a href="javascript:void(0)"
+										onclick="goToPage('view_spaces')">View Spaces</a>
+									</li>
+									<li><a href="javascript:void(0)"
+										onclick="goToPage('frustum')">Frustum</a>
+									</li>
+									<li><a href="javascript:void(0)"
+										onclick="goToPage('2d_25d_3d')">2D, 2.5D, 3D</a>
+									</li>
+									<li><a href="javascript:void(0)"
+										onclick="goToPage('orbit_cam')">Orbitting Camera</a>
+									</li>
+									<li><a href="javascript:void(0)"
+										onclick="goToPage('offset_cam')">Offset Camera</a>
+									</li>
+									<li><a href="javascript:void(0)"
+										onclick="goToPage('lenses_focal_points')">Lenses and Focal Points</a>
+									</li>
+									<li><a href="javascript:void(0)"
+										onclick="goToPage('bokeh')">Bokeh</a>
+									</li>
+								</ul>
+							</li>
+							<!-- <li>
+								<span class="opener">Rendering</span>
+								<ul>
+									<li><a href="javascript:void(0)">History</a></li>
+									<li><a href="javascript:void(0)">Scanline</a></li>
+									<li><a href="javascript:void(0)">Rasterizer</a></li>
+									<li><a href="javascript:void(0)">Deferred</a></li>
+									<li><a href="javascript:void(0)">Raytracer</a></li>
+									<li><a href="javascript:void(0)">Pathtracer</a></li>
+									<li><a href="javascript:void(0)">Photon-Mapper</a></li>
+									<li><a href="javascript:void(0)">Volumetric</a></li>
+									<li><a href="javascript:void(0)">Denoising</a></li>
+									<li><a href="javascript:void(0)">Real-time Rendering</a></li>
+								</ul>
+							</li>
+							<li>
+								<span class="opener">Lighting</span>
+								<ul>
+									<li><a href="javascript:void(0)">The Lighting Equation</a></li>
+									<li><a href="javascript:void(0)">Different Light Types</a></li>
+									<li><a href="javascript:void(0)">Materials</a></li>
+									<li><a href="javascript:void(0)">Reflection and Refraction</a></li>
+									<li><a href="javascript:void(0)">BxDFs</a></li>
+									<li><a href="javascript:void(0)">Multiple-Importance Sampling</a></li>
+									<li><a href="javascript:void(0)">Subsurface Scattering</a></li>
+								</ul>
+							</li>
+							<li>
+								<span class="opener">Physically-based Simulation</span>
+								<ul>
+									<li><a href="javascript:void(0)">Memory management for simulation</a></li>
+									<li><a href="javascript:void(0)">Position-Based Dynamics</a></li>
+									<li><a href="javascript:void(0)">Position-Based Fluids</a></li>
+									<li><a href="javascript:void(0)">Mass-Spring System</a></li>
+									<li><a href="javascript:void(0)">FLIP for Fluid</a></li>
+									<li><a href="javascript:void(0)">MPM for non-newtonian</a></li>
+									<li><a href="javascript:void(0)">Fire</a></li>
+									<li><a href="javascript:void(0)">Rainbows</a></li>
+								</ul>
+							</li>
+							<li>
+								<span class="opener">Behavior-based Simulation</span>
+								<ul>
+									<li><a href="#">Boids</a></li>
+								</ul>
+							</li>
+							<li>
+								<span class="opener">Surface Manipulation Techniques</span>
+								<ul>
+									<li><a href="javscript:void(0)"
+										onclick="goToPage('splines')">Splines</a>
+									</li>
+									<li><a href="javascript:void(0)"
+										onclick="goToPage('3d_outter_mesh_manipulation')">3D outter mesh manipulation</a>
+									</li>
+									<li><a href="javascript:void(0)"
+										onclick="goToPage('scene graph forward')">Scene graphics forward ...</a>
+									</li>
+									<li><a href="javascript:void(0)"
+										onclick="goToPage('scene graph backward kinematics')">Scene graphics backwards ke ...</a>
+									</li>
+								</ul>
+							<li>
+								<span class="opener">Procedural Techniques</span>
+								<ul>
+									<li><a href="javascript:void(0)">Noise</a></li>
+									<li><a href="javascript:void(0)">Fractals</a></li>
+									<li><a href="javascript:void(0)">Raymarching</a></li>
+									<li><a href="javascript:void(0)">SDFs</a></li>
+									<li><a href="javascript:void(0)">CSGs</a></li>
+									<li><a href="javascript:void(0)">L-Systems</a></li>
+								</ul>
+							</li>
+							<li>
+								<span class="opener">Acceleration Structures</span>
+								<ul>
+									<li><a href="javascript:void(0)">K-D Trees</a></li>
+									<li><a href="javascript:void(0)">BVH Trees</a></li>
+								</ul>
+							</li>
+							<li>
+								<span class="opener">Mesh Manipulations</span>
+								<ul>
+									<li><a href="javascript:void(0)">Half-Edge Data Structure</a></li>
+									<li><a href="javascript:void(0)">Simple Mesh Algorithms</a></li>
+									<li><a href="javascript:void(0)">Complex Mesh Algorithms</a></li>
+								</ul>
+							</li>
+							<li>
+								<span class="opener">Coding Concepts</span>
+								<ul>
+									<li><a href="javascript:void(0)">C++ Basics</a></li>
+									<li><a href="javascript:void(0)">Stack vs Heap</a></li>
+									<li><a href="javascript:void(0)">&, Memory vs References</a></li>
+									<li><a href="javascript:void(0)">Const</a></li>
+									<li><a href="javascript:void(0)">Numerical Datatypes</a></li>
+									<li><a href="javascript:void(0)">Raw and Smart Pointers</a></li>
+									<li><a href="javascript:void(0)">Inheritance, Polymorphism, and Type-casting</a></li>
+									<li><a href="javascript:void(0)">JavaScript Basics</a></li>
+									<li><a href="javascript:void(0)">Three.js</a></li>
+								</ul>
+							</li>
+							<li>
+								<span class="opener">Pipelines</span>
+								<ul>
+									<li><a href="javascript:void(0)">History</a></li>
+									<li><a href="javascript:void(0)">WebGL</a></li>
+									<li><a href="javascript:void(0)">OpenGL</a></li>
+									<li><a href="javascript:void(0)">Vulkan</a></li>
+									<li><a href="javascript:void(0)">RTX</a></li>
+								</ul>
+							</li> -->
+							<li>
+								<span class="opener">Miscellaneous</span>
+								<ul>
+									<li>
+										<a href="javascript:void(0)" onclick="goToPage('about')">About the Author</a>
+									</li>
+									<li>
+										<a href="javascript:void(0)" onclick="goToPage('copyright')">Copyright and Code Use</a>
+									</li>
+									<li>
+										<a href="javascript:void(0)" onclick="goToPage('resources')">Helpful Resources</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</nav>
+
+					<section>
+						<h4>Get in touch</h4>
+						<p>Have a question, comment, or correction?<br/><br/>
+							<button id ="myBtn" class="fit" onclick="goToPage('contact')">Contact</button>
+						</p>
+					</section>
+
+					<!-- Footer -->
+					<footer id="footer">
+						<p class="copyright">&copy; ComputingTheGraphics 2020<br/>All rights reserved<br/>Modification of Editorial Theme from <a href="http://html5up.net">HTML5 UP</a></p>
+					</footer>
+
+				</div>
+			</div>
+
+		</div>
+
+		<!-- <script>
+			window.onmessage = (e) => {
+		      if (e.data.hasOwnProperty("frameHeight")) {
+		        document.getElementById("mainloader").style.height = `${e.data.frameHeight + 30}px`;
+		      }
+		    };
+		</script> -->
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<!-- <script src="modal.js"></script> -->
+	</body>
+</html>
