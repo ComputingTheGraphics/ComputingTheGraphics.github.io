@@ -4,14 +4,7 @@ function goToPage(postName) {
 	found = index >= 0;
 	suburl = found ? keysOfPosts[index] : "404";
 
-	console.log('keysOfPosts');
-	console.log(keysOfPosts);
-	console.log(postName);
-	console.log(found);
-	console.log(index);
-	console.log(keysOfPosts[index]);
-
-	window.location.href = "./?post="+suburl;
+	window.location.href = "https://www.computingthegraphics.com/?post="+suburl;
 
 	hideSearch(true);
 }
@@ -30,20 +23,41 @@ function setIframeHeight(id) {
     var doc = ifrm.contentDocument? ifrm.contentDocument: 
         ifrm.contentWindow.document;
     ifrm.style.visibility = 'hidden';
-    ifrm.style.height = "10px"; // reset to minimal height ...
+    ifrm.style.height = "500px"; // reset to minimal height ...
     // IE opt. for bing/msn needs a bit added or scrollbar appears
     ifrm.style.height = getDocHeight( doc ) + 4 + "px";
     ifrm.style.visibility = 'visible';
 }
 
-function urlUpdated() {
+function old_urlUpdated() {
 	var mainLoader = document.getElementById("mainloader");
 	var post = getValueFromUrl('post');
 	if (post == undefined) {
 		post = 'welcome';
 	}
 
-	mainLoader.src = "./posts/"+post+".html";
+	mainLoader.src = "https://www.computingthegraphics.com/posts/"+post+".html";
+
+	searchVal = getValueFromUrl('searchtext');
+
+	if (post == "404") {
+		setSearch("", searching=false);
+		hideSearch(false);
+	} else if (searchVal != undefined) {
+		setSearch(searchVal, searching=true);
+		hideSearch(false);
+	}
+}
+
+function urlUpdated() {
+	var post = getValueFromUrl('post');
+	if (post == undefined) {
+		post = 'welcome';
+	}
+
+	var postContent = document.getElementById("text-post-content");
+	postContent.innerHTML = htmlOfPosts[post];
+	console.log(postContent.innerHTML);
 
 	searchVal = getValueFromUrl('searchtext');
 

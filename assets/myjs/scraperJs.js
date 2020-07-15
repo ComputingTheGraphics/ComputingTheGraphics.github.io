@@ -46,12 +46,13 @@ const loadAllPosts = (flexSearch) => {
     if (keysOfPosts[idx] == '404' || keysOfPosts[idx] == 'contact') {
       continue;
     }
-    const htmlDoc = parseHTMLString(readFile('./posts/'+keysOfPosts[idx]+'.html'));
+    const fileInfo = readFile('./posts/'+keysOfPosts[idx]+'.html');
+    const htmlDoc = parseHTMLString(fileInfo);
     const htmlSearchString = getSearchStringForDoc(htmlDoc);
 
     // add loaded version of website to data dictionary in data.js
+    htmlOfPosts[keysOfPosts[idx]] = fileInfo;
     dataOfPosts[keysOfPosts[idx]] = htmlSearchString;
-
     flexSearch.add(keysOfPosts[idx], htmlSearchString);
   }
 };

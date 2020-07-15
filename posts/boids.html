@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>ComputingTheGraphics</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="https://www.computingthegraphics.com/assets/css/main.css" />
+		<!-- ads -->
+		<script data-ad-client="ca-pub-1164050131653437" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	</head>
+	<body class="is-preload" id="bodycontent">
+<section>
+<header>
+	<h1>Boids</h1>
+</header>
+	<h4>Table of Contents:</h4>
+	<div class="box">
+	- <a href="#Origin">Origin</a>
+	<br/>- <a href="#Rules">Boids Rules</a>
+	<br/>- <a href="#Grid">Grid System</a>
+	<br/>&#8195;&#8195;- <a href="https://www.computingthegraphics.com/posts/boids.html#Naive">Naive</a>
+	<br/>&#8195;&#8195;- <a href="#Scattered">Scattered</a>
+	<br/>&#8195;&#8195;- <a href="#Coherent">Coherent</a>
+	<br/>&#8195;&#8195;- <a href="#Spherical">Additional Optimizations</a>
+	<br/>- <a href="#Resources">Resources</a>
+	</div>
+</section>
+<section>
+	<h2 id="Origin">Artificial Life</h2>
+	<p>
+	This is an artificial life program akin to Conway's Game of Life. For these programs, the user defines an initial state, and every following state organically develops through a set of predefined rules of the program. Instead of pixel changes like in Conway's Game of Life, this boid implementation developed by Craig Reynolds in 1986 is meant to define boid movements and in doing so simulate the flocking movement and orientation of birds in flight.
+	</p>
+	<p>
+		Emergent behavior
+	</p>
+	<p>
+		Swarm intelligence
+	</p>
+</section>
+<section>
+	<h2 id="Rules">Rules</h2>
+	<p>
+	Since the execution is defined based on the initial state, the current implementation has a scattered initial distribution of the boid positions (each boid is a particle in the visual). There is also a positional wrapping, so that as the boids continue moving throughout the grid, they are maintained in the same cube of space, making the simulation more interesting.
+	<br/><br/>
+	In regards to the actual rules defined for the simulation - we have the following three ideas:
+	<div class="box">
+	    <code>adhesion</code> - a force aiming to push every boid to the center of mass of all boids near it<br/>
+	    <code>avoidance/dodging</code> - a force aiming to push every boid away from every other boid near it<br/>
+	    <code>cohesion</code> - a force aiming to make each boid have a similar velocity to those near it
+	</div>
+	The psuedocode is as follows:
+	<br/><br/>
+<pre><code>main rule setup(Boid boid)
+</code></pre>
+	<div class="row">
+		<div class="col-4 col-12-medium">
+<pre><code>rule1_adhesion(Boid boid)
+    vector perceived_center = 0
+    float neighbor_count = 0
+
+    foreach Boid b:
+        if b != boid and distance(b, boid) < rule1Distance then
+            perceived_center += b.position
+            ++neighbor_count
+        endif
+    end
+    perceived_center /= neighbor_count
+
+    return (perceived_center - boid.position) * rule1Scale
+</code></pre>
+		</div>
+		<div class="col-4 col-12-medium">
+<pre><code>rule2_avoidance_dodging(Boid boid)
+	vector avoidance_velocity = 0
+
+	foreach Boid b
+	    if b != boid and distance(b, boid) < rule2Distance then
+	        avoidance_velocity += (boid.position - b.position)
+	    endif
+	end
+
+	return avoidance_velocity * rule2Scale
+</code></pre>
+		</div>
+		<div class="col-4 col-12-medium">
+<pre><code>rule3_cohesion(Boid boid)
+	vector cohesive_velocity = 0
+	float neighbor_count = 0
+
+	foreach Boid b
+	    if b != boid and distance(b, boid) < rule3Distance then
+	        cohesive_velocity += b.velocity
+	        ++neighbor_count
+	    endif
+	end
+	cohesive_velocity /= neighbor_count
+
+	return cohesive_velocity * rule3Scale
+</code></pre>
+		</div>
+	</div>
+	Since these only affect the delta by which a current velocity should be updated, the updated velocity for a current value is as follows:
+<pre><code>updated_vel = current_vel + rule1_adhesion + rule2_avoidance_dodging + rule3_cohesion</code></pre>
+
+	For more reference regarding the pseudocode see this derivation.
+	</p>
+</section>
+<section>
+	<h2 id="Grid">Grid System</h2>
+	<p>
+		For each boid, each rule is enacted on the boid itself and those within a specific distance near the boid to create the grouping effect we see in the final output. The way we actually find which boids are within those distances depends on how we're searching through our grid system.
+	</p>
+	<h4 id="Naive">Naive</h4>
+	<p>
+		For the first implementation, we iterate over every grid cell checking if any boid inside of the grid cell is within any of the specified distances for each of the three defined rules. This is costly for runtime as we're iterating over the entire grid width in all three dimensions.
+	</p>
+	<h4 id="Scattered">Scattered</h4>
+	<p>
+		For the second implementation, we optimize our search based on a max distance instead of iterating over every grid cell possible. We set this distance as the max value of all three of the rule's comparison distances: max_distance = max(rule1_distance, max(rule2_distance, rule3_distance)).
+		<br/>
+		checking based on cell locations
+		<br/>
+		Then for each boid, we limit our search area based on the grid cells that have any aspect of them within the max_distance. This allows us to avoid having to do a positional comparison with the corner points of each grid cell, while at the same time also allowing a more flexible approach since we're just defining a min cell index and max cell index in all three cardinal directions. That is, we dont have to manually check a hard-coded specific number of surrounding cells depending on the implementation (such as the 8 surrounding cells, 27 surrounding cells, etc).
+		<br/>
+		large versus small max distance
+		<br/>
+		Also because we want to allow this grid to be placed anywhere in space, for other implementation purposes and project extensions, every time we do a position comparison to find a grid index, we must make sure the grid is zeroed. That is, we must make sure that the origin of our grid, which is not guaranteed to be (0, 0, 0), is actually (0, 0, 0) for our calculations. Thus, when doing update calculations, we must offset each position value by the grid origin's location: position_for_calculation = (position - gridOrigin).
+		<br/>
+		zeroing the origin
+	</p>
+	<h4 id="Coherent">Coherent</h4>
+	<p>
+		For the third implementation, we used the same algorithmic idea as in the scattered implementation; however, we speed up the runtime by changing one function call. In doing so, it removes an exaggerated runtime cost by taking away an additional call in the for loop inside the triple for loop of our velocity update and adding a one time call to the timestep update.
+
+		For the following example grid, each implementation has slightly different buffers. demo grid buffer changes
+
+		The switch in what buffers are used means that as we are iterating over the boids inside a cell index, this
+<pre>
+<code>int on_boid = particleArrayIndices[given_index];
+if (on_boid == particle_index) { continue; }
+glm::vec3 boid_position = pos[on_boid];</code></pre>
+		can be shortened just to this
+	</p>
+	<div class="box">
+		if (given_index == particle_index) { continue; }
+		glm::vec3 boid_position = pos[given_index];
+	</div>
+	<p>
+		This change is because for the simple grid implementation, the given index of a boid in the cell does not match the same index in its position and velocity buffers since the cell's one is out of order. In the simple implementation, we use a buffer that maps this given_index to the appropriate index in the positions and velocity buffers. To fix this, in the simulationStep we actually shuffle the elements in our position and velocity buffers to match the same ordering as that of the grid cell index buffer. That way, the cell index that we're iterating over is the same index that corresponds to the position and velocity values in those buffers as well.
+	</p>
+	<h4 id="Spherical">Additional Optimizations</h4>
+	<p>
+		An additional optimization that I'd like to implement (tbd) is a radius intersection check instead of the generic bounds. Doing this check would even further optimize the coherent implementation for even more boids. The idea is that instead of doing a generic min to max dimensions check, within the min to max dimensions also add a check for if the nearest corner of the grid cell to the boid (that the boid is not already in) is within the max_distance. Following our example images from scattered - we've culled an additional seven cells even for such a simple example. radius check
+	</p>
+</section>
+<section>
+	<h2 id="Resources">Resources</h2>
+	<div class="box">
+		- inspired from UPenn's CIS 565 <a target="_blank" href="https://github.com/CIS565-Fall-2018/Project1-CUDA-Flocking">Boids Project</a><br/>
+		- <a target="_blank" href="http://www.vergenet.net/%7Econrad/boids/pseudocode.html">Boids</a> as explained by <a target="_blank" href="http://www.vergenet.net/~conrad/">Conrad Parker</a> on vergenet
+	</div>
+</section>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

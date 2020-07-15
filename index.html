@@ -43,9 +43,10 @@
 						</section>
 					</form>
 					<section>
-						<div class="iframe-container">
+						<!-- <div class="iframe-container">
 							<iframe id="mainloader" src="" marginheight="0" scrolling=yes onload="setIframeHeight(this.id)"></iframe>
-						</div>
+						</div> -->
+						<div id="text-post-content"></div>
 					</section>
 				</div>
 			</div>
@@ -70,169 +71,19 @@
 									<li><a href="javascript:void(0)"
 										onclick="goToPage('welcome')">Welcome</a>
 									</li>
-									<li><a href="javascript:void(0)"
-										onclick="goToPage('intro_to_cg')">Introduction to Computer Graphics</a>
-									</li>
-									<li><a href="javascript:void(0)"
-										onclick="goToPage('light_and_color')">Light and Color</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<span class="opener">Useful Math</span>
-								<ul>
-									<li><a href="javascript:void(0)"
-										onclick="goToPage('trigonometry')">Trigonometry Basics</a>
-									</li>
-									<li><a href="javascript:void(0)"
-										onclick="goToPage('la_basics')">Linear Algebra Basics</a>
-									</li>
-									<li><a href="javascript: void(0)"
-										onclick="goToPage('calc_basics')">Calculus Basics</a>
-									</li>
-									<li><a href="javascript:void(0)"
-										onclick="goToPage('trans_matrices')">Transformation Matrices</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<span class="opener">Camera</span>
-								<ul>
-									<li><a href="javascript:void(0)"
-										onclick="goToPage('view_spaces')">View Spaces</a>
-									</li>
-									<li><a href="javascript:void(0)"
-										onclick="goToPage('frustum')">Frustum</a>
-									</li>
-									<li><a href="javascript:void(0)"
-										onclick="goToPage('2d_25d_3d')">2D, 2.5D, 3D</a>
-									</li>
-									<li><a href="javascript:void(0)"
-										onclick="goToPage('orbit_cam')">Orbitting Camera</a>
-									</li>
-									<li><a href="javascript:void(0)"
-										onclick="goToPage('offset_cam')">Offset Camera</a>
-									</li>
-									<li><a href="javascript:void(0)"
-										onclick="goToPage('lenses_focal_points')">Lenses and Focal Points</a>
-									</li>
-									<li><a href="javascript:void(0)"
-										onclick="goToPage('bokeh')">Bokeh</a>
-									</li>
-								</ul>
-							</li>
-							<!-- <li>
-								<span class="opener">Rendering</span>
-								<ul>
-									<li><a href="javascript:void(0)">History</a></li>
-									<li><a href="javascript:void(0)">Scanline</a></li>
-									<li><a href="javascript:void(0)">Rasterizer</a></li>
-									<li><a href="javascript:void(0)">Deferred</a></li>
-									<li><a href="javascript:void(0)">Raytracer</a></li>
-									<li><a href="javascript:void(0)">Pathtracer</a></li>
-									<li><a href="javascript:void(0)">Photon-Mapper</a></li>
-									<li><a href="javascript:void(0)">Volumetric</a></li>
-									<li><a href="javascript:void(0)">Denoising</a></li>
-									<li><a href="javascript:void(0)">Real-time Rendering</a></li>
-								</ul>
-							</li>
-							<li>
-								<span class="opener">Lighting</span>
-								<ul>
-									<li><a href="javascript:void(0)">The Lighting Equation</a></li>
-									<li><a href="javascript:void(0)">Different Light Types</a></li>
-									<li><a href="javascript:void(0)">Materials</a></li>
-									<li><a href="javascript:void(0)">Reflection and Refraction</a></li>
-									<li><a href="javascript:void(0)">BxDFs</a></li>
-									<li><a href="javascript:void(0)">Multiple-Importance Sampling</a></li>
-									<li><a href="javascript:void(0)">Subsurface Scattering</a></li>
-								</ul>
-							</li>
-							<li>
-								<span class="opener">Physically-based Simulation</span>
-								<ul>
-									<li><a href="javascript:void(0)">Memory management for simulation</a></li>
-									<li><a href="javascript:void(0)">Position-Based Dynamics</a></li>
-									<li><a href="javascript:void(0)">Position-Based Fluids</a></li>
-									<li><a href="javascript:void(0)">Mass-Spring System</a></li>
-									<li><a href="javascript:void(0)">FLIP for Fluid</a></li>
-									<li><a href="javascript:void(0)">MPM for non-newtonian</a></li>
-									<li><a href="javascript:void(0)">Fire</a></li>
-									<li><a href="javascript:void(0)">Rainbows</a></li>
 								</ul>
 							</li>
 							<li>
 								<span class="opener">Behavior-based Simulation</span>
 								<ul>
-									<li><a href="#">Boids</a></li>
-								</ul>
-							</li>
-							<li>
-								<span class="opener">Surface Manipulation Techniques</span>
-								<ul>
-									<li><a href="javscript:void(0)"
-										onclick="goToPage('splines')">Splines</a>
+									<li><a href="javascript:void(0)"
+										onclick="goToPage('biocrowds')">BioCrowds</a>
 									</li>
 									<li><a href="javascript:void(0)"
-										onclick="goToPage('3d_outter_mesh_manipulation')">3D outter mesh manipulation</a>
-									</li>
-									<li><a href="javascript:void(0)"
-										onclick="goToPage('scene graph forward')">Scene graphics forward ...</a>
-									</li>
-									<li><a href="javascript:void(0)"
-										onclick="goToPage('scene graph backward kinematics')">Scene graphics backwards ke ...</a>
+										onclick="goToPage('boids')">Boids</a>
 									</li>
 								</ul>
-							<li>
-								<span class="opener">Procedural Techniques</span>
-								<ul>
-									<li><a href="javascript:void(0)">Noise</a></li>
-									<li><a href="javascript:void(0)">Fractals</a></li>
-									<li><a href="javascript:void(0)">Raymarching</a></li>
-									<li><a href="javascript:void(0)">SDFs</a></li>
-									<li><a href="javascript:void(0)">CSGs</a></li>
-									<li><a href="javascript:void(0)">L-Systems</a></li>
-								</ul>
-							</li>
-							<li>
-								<span class="opener">Acceleration Structures</span>
-								<ul>
-									<li><a href="javascript:void(0)">K-D Trees</a></li>
-									<li><a href="javascript:void(0)">BVH Trees</a></li>
-								</ul>
-							</li>
-							<li>
-								<span class="opener">Mesh Manipulations</span>
-								<ul>
-									<li><a href="javascript:void(0)">Half-Edge Data Structure</a></li>
-									<li><a href="javascript:void(0)">Simple Mesh Algorithms</a></li>
-									<li><a href="javascript:void(0)">Complex Mesh Algorithms</a></li>
-								</ul>
-							</li>
-							<li>
-								<span class="opener">Coding Concepts</span>
-								<ul>
-									<li><a href="javascript:void(0)">C++ Basics</a></li>
-									<li><a href="javascript:void(0)">Stack vs Heap</a></li>
-									<li><a href="javascript:void(0)">&, Memory vs References</a></li>
-									<li><a href="javascript:void(0)">Const</a></li>
-									<li><a href="javascript:void(0)">Numerical Datatypes</a></li>
-									<li><a href="javascript:void(0)">Raw and Smart Pointers</a></li>
-									<li><a href="javascript:void(0)">Inheritance, Polymorphism, and Type-casting</a></li>
-									<li><a href="javascript:void(0)">JavaScript Basics</a></li>
-									<li><a href="javascript:void(0)">Three.js</a></li>
-								</ul>
-							</li>
-							<li>
-								<span class="opener">Pipelines</span>
-								<ul>
-									<li><a href="javascript:void(0)">History</a></li>
-									<li><a href="javascript:void(0)">WebGL</a></li>
-									<li><a href="javascript:void(0)">OpenGL</a></li>
-									<li><a href="javascript:void(0)">Vulkan</a></li>
-									<li><a href="javascript:void(0)">RTX</a></li>
-								</ul>
-							</li> -->
+							
 							<li>
 								<span class="opener">Miscellaneous</span>
 								<ul>
@@ -252,8 +103,8 @@
 
 					<section>
 						<h4>Get in touch</h4>
-						<p>Have a question, comment, or correction?<br/><br/>
-							<button id ="myBtn" class="fit" onclick="goToPage('contact')">Contact</button>
+						<p>Have a question or comment?<br/><br/>
+							<button id ="myBtn" class="fit" onclick="window.open('contact.html', '_blank')">Contact</button>
 						</p>
 					</section>
 
