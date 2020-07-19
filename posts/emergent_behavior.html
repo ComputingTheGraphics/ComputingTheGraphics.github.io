@@ -1,31 +1,27 @@
 <section>
 <header>
-	<h1>Boids</h1>
+	<h1>Emergent Behavior</h1>
 </header>
 	<h4>Table of Contents:</h4>
 	<div class="box">
-	- <a href="#Origin">Emergent Behavior</a>
+	- <a href="#MainIdea">Main Idea</a>
 	<br/>- <a href="#Rules">Boids Rules</a>
 	<br/>- <a href="#Grid">Grid System</a>
-	<br/>&#8195;&#8195;- <a href="https://www.computingthegraphics.com/posts/boids.html#Naive">Naive</a>
-	<br/>&#8195;&#8195;- <a href="#Scattered">Scattered</a>
-	<br/>&#8195;&#8195;- <a href="#Coherent">Coherent</a>
-	<br/>&#8195;&#8195;- <a href="#Spherical">Additional Optimizations</a>
 	<br/>- <a href="#Resources">Resources</a>
 	</div>
 </section>
 <section>
-	<h2 id="Origin">Emergent Behavior</h2>
+	<h2 id="MainIdea">Main Idea</h2>
 	<p> TODO - ADD COMIC HERE!!!!!!<br/><br/>
 		These programs of artificial life are focused on emergent behavior. Just like real-world organic systems, the resultant behavior is understood as an amalgamation of its parts and their relationships with one another. Some examples from nature include - fire ants creating a bridge, it is not one individual ant in charge telling them to to do so, but instead they begin building as a collective - birds in flight or schools of fish, they move in relation to one another with a general focus for a destination. In sum, it is a focus on systems or the combined small decisions by subsets of the larger group to create a final outcome, instead of clearly defined step-by-step procedures.
 	</p>
 	<p>
 		<span class="image right"><img src="https://en.wikipedia.org/wiki/Conway's_Game_of_Life#/media/File:Gospers_glider_gun.gif" style="border-radius: 0.35em; border: solid 3px #efefef;" alt="" /></span>
-		One of the most understood examples in computer graphics is Conway's Game of Life. The game is configured as follows: there are <code>live</code> cells and <code>dead</code> cells all touching in a gridded formation. The user defines an initial state after which they do not interact with the program at all. Every following state organically develops through a set of predefined simple rules:<br/>
+		One of the most understood examples in computer graphics is Conway's Game of Life. The game is configured as follows: there are live cells and dead cells all touching in a gridded formation. The user defines an initial state after which they do not interact with the program at all. Every following state organically develops through a set of predefined simple rules:<br/>
 		<div class="box">
-			- a <code>live cell</code> with 2/3 <code>live neighbors</code> survives to the next round <br/>
-			- a <code>dead cell</code> with 3 <code>live neighbors</code> lives in the next round <br/>
-			- all other cells die in the next round <br/>
+			<code>Survival</code> - a live cell with 2/3 live neighbors survives to the next round <br/>
+			<code>Birth</code> - a dead cell with 3 live neighbors lives in the next round <br/>
+			<code>Death</code> - all other cells die in the next round <br/>
 		</div>
 		These simple rules lead to small behaviors named <code>still lives</code>, <code>oscillators</code>, and <code>spaceships</code>. Minimal versions of them can be seen below...
 	<div class="row">

@@ -1,9 +1,10 @@
 var keysOfPosts = [
 'about',
-'biocrowds',
+'bioCrowds',
 'boids',
 'contact',
 'copyright',
+'emergent_behavior',
 'resources',
 'welcome',
 '404'
