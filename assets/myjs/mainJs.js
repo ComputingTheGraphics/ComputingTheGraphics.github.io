@@ -1,4 +1,6 @@
 function goToPage(postName) {
+	console.log(postName)
+
 	index = keysOfPosts.indexOf(postName.toLowerCase());
 
 	found = index >= 0;
@@ -29,26 +31,6 @@ function setIframeHeight(id) {
     ifrm.style.visibility = 'visible';
 }
 
-function old_urlUpdated() {
-	var mainLoader = document.getElementById("mainloader");
-	var post = getValueFromUrl('post');
-	if (post == undefined) {
-		post = 'welcome';
-	}
-
-	mainLoader.src = "https://www.computingthegraphics.com/posts/"+post+".html";
-
-	searchVal = getValueFromUrl('searchtext');
-
-	if (post == "404") {
-		setSearch("", searching=false);
-		hideSearch(false);
-	} else if (searchVal != undefined) {
-		setSearch(searchVal, searching=true);
-		hideSearch(false);
-	}
-}
-
 function urlUpdated() {
 	var post = getValueFromUrl('post');
 	if (post == undefined) {
@@ -56,7 +38,10 @@ function urlUpdated() {
 	}
 
 	var postContent = document.getElementById("text-post-content");
+	console.log(postContent)
+
 	postContent.innerHTML = htmlOfPosts[post];
+
 	console.log(postContent.innerHTML);
 
 	searchVal = getValueFromUrl('searchtext');
