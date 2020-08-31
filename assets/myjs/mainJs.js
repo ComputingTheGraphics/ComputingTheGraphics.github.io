@@ -2,9 +2,18 @@ function goToPage(postName) {
 	console.log(postName)
 
 	index = keysOfPosts.indexOf(postName.toLowerCase());
-
+	mediumIndex = mediumPosts.indexOf(postName.toLowerCase());
 	found = index >= 0;
 	suburl = found ? keysOfPosts[index] : "404";
+	if !(index >= 0) {
+		index = mediumPosts.indexOf(postName.toLowerCase());
+	}
+	
+	
+
+	if (!found) {
+
+	}
 
 	window.location.href = "https://www.computingthegraphics.com/?post="+suburl;
 

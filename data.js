@@ -11,6 +11,10 @@ var keysOfPosts = [ '404']
 // '404'
 // ]
 
+var mediumPosts = [
+'mediumtest'
+]
+
 // to be filled in with post text data when search bar loads
 var dataOfPosts = {
 }
