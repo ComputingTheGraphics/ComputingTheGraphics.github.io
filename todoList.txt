@@ -1,0 +1,3 @@
+[ ] make all files md for writing
+[ ] make searching work on md files so dont need other plugin
+[ ] clean up rest of site (add more todos for this)

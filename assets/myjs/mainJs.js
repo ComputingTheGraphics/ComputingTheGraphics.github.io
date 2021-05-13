@@ -1,4 +1,4 @@
-function goToPage(postName) {
+/*function goToPage(postName) {
 	console.log(postName)
 
 	index = keysOfPosts.indexOf(postName.toLowerCase());
@@ -18,6 +18,25 @@ function goToPage(postName) {
 	window.location.href = "https://www.computingthegraphics.com/?post="+suburl;
 
 	hideSearch(true);
+}*/
+
+function validUrl(url) {
+    var http = new XMLHttpRequest();
+    http.open('HEAD', url, false);
+    http.send();
+    return http.status != 404;
+}
+
+function goToPage(postName) {
+    console.log(postName)
+
+    // Check if it's a valid file stored in the posts directory
+    // Update the url so back spacing / going back a tab works as expected.
+    postLocation = window.location.href+"posts/"+postName+".md"
+    suburl = validUrl(postLocation) ? postName : "404" 
+    window.location.href = "https://www.computingthegraphics.com/?post="+suburl;
+
+    hideSearch(true);
 }
 
 function getDocHeight(doc) {
@@ -41,20 +60,18 @@ function setIframeHeight(id) {
 }
 
 function urlUpdated() {
+    // Loading a post?
+    console.log('load up a post////')
 	var post = getValueFromUrl('post');
+    console.log('post is '+post)
 	if (post == undefined) {
 		post = 'welcome';
 	}
+	var mdHtmlPageIFrame = document.getElementById("mainloader");
+    mdHtmlPageIFrame.src = '/posts/'+post+'.html'
 
-	var postContent = document.getElementById("text-post-content");
-	console.log(postContent)
-
-	postContent.innerHTML = htmlOfPosts[post];
-
-	console.log(postContent.innerHTML);
-
+    // Searching?
 	searchVal = getValueFromUrl('searchtext');
-
 	if (post == "404") {
 		setSearch("", searching=false);
 		hideSearch(false);
@@ -67,8 +84,7 @@ function urlUpdated() {
 function getValueFromUrl(key) {
 	var urlString = window.location.href; 
 	var url = new URL(urlString);
-	var value = url.searchParams.get(key);
-	return value
+	return url.searchParams.get(key);
 }
 
 function hideSearch(hiding) {
@@ -96,13 +112,25 @@ function setupSearch() {
 	loadAllPosts(flexsearch);
 	console.log('setup search');
 	console.log('setup search runs everytime the page is reloaded - is this okay?');
-}
+} 
 setupSearch();
 
 
 function boldString(str, substr) {
   var strRegExp = new RegExp(substr, 'g');
   return str.replace(strRegExp, '<b>'+substr+'</b>');
+}
+
+function dataFromPost(mdPost) {
+    var allPosts = fs.readdirSync('/posts/');
+    var fs = require('fs');
+    fs.readFile('/posts/' + mdPost, function (err, data) {
+      if (err) {
+         return console.error(err);
+      }
+      console.log("Asynchronous read: " + data.toString());
+      return data.toString();
+   });
 }
 
 function search(value) {
@@ -115,7 +143,7 @@ function search(value) {
 	for (idx in result) {
 		var resultPost = result[idx];
 
-		var postText = dataOfPosts[resultPost];
+        var postText = dataFromPost(resultPost+'.md');
 
 		var resultIdx = postText.indexOf(value);
 

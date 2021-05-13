@@ -26,12 +26,9 @@ const htmlStringMatchesQuery = (str, query) => {
 };
 
 const readHTMLFile = (filePath, filename) => {
-  if (window.XMLHttpRequest)
-  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
       xmlhttp=new XMLHttpRequest();
-  }
-  else
-  {// code for IE6, IE5
+  } else {// code for IE6, IE5
       xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
   }
   xmlhttp.open("GET",filePath,false);
@@ -48,26 +45,23 @@ function readFile(file) {
 })}
 
 const loadAllPosts = (flexSearch) => {
-  for (idx in keysOfPosts) {
-    if (keysOfPosts[idx] == '404' || keysOfPosts[idx] == 'contact') {
+  var fs = require('fs');
+  var allPosts = fs.readdirSync('/posts/');
+
+  for (post in allPosts) {
+    postName = post.substring(0, post.size()-3) // remove .md
+    print('postName is '+postName);
+    if (postName == '404') {
       continue;
     }
 
-    print(keysOfPosts[idx])
+    print(post);
 
-    // const fileInfo = readHTMLFile('./posts/'+keysOfPosts[idx]+'.html');
-    const fileInfo = readFile('./posts/'+keysOfPosts[idx]+'.md'); // TODO ---- need to implement readMDFile-----
-
-    var converter = new showdown.Converter();
-    const htmlOfMd = converter.makeHtml(fileInfo);
-    
-    // convert md to html for search
-    const htmlDoc = parseHTMLString(htmlOfMd);
+    const fileInfo = readHTMLFile(
+        'http://www.computingthegraphics.com/posts/' + postName + '.html');
+    const htmlDoc = parseHTMLString(fileInfo);
     const htmlSearchString = getSearchStringForDoc(htmlDoc);
 
-    // add loaded version of website to data dictionary in data.js
-    htmlOfPosts[keysOfPosts[idx]] = htmlDoc;
-    dataOfPosts[keysOfPosts[idx]] = htmlSearchString;
-    flexSearch.add(keysOfPosts[idx], htmlSearchString);
+    flexSearch.add(postName, htmlSearchString);
   }
 };
