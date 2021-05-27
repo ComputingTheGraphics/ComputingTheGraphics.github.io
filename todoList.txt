@@ -6,6 +6,9 @@
 "nothing's real and everything matters - computer graphics and the brain"
 
 
+example: use discussions page for questions
+https://github.com/RayTracing/raytracing.github.io/discussions/
+
 
 - history of graphics
 - rendering
