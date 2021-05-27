@@ -1,3 +1,50 @@
 [ ] make all files md for writing
 [ ] make searching work on md files so dont need other plugin
 [ ] clean up rest of site (add more todos for this)
+
+
+"nothing's real and everything matters - computer graphics and the brain"
+
+
+
+- history of graphics
+- rendering
+- floating point, matrices, tranformations, etc
+- rasterization
+
+youtube
+- do in this style: https://www.youtube.com/watch?v=8ZhoeSaPF-k ?
+- or do in ppt style?
+
+https://www.amazon.com/gp/product/0393977218/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&psc=1
+
+https://www.youtube.com/watch?v=Wi0l4dZiBpY
+
+https://randomascii.wordpress.com/2012/02/13/dont-store-that-in-a-float/
+Inbox
+	x
+
+einstein and picasso
+
+https://www.xkcd.com/1080/
+https://www.youtube.com/watch?v=4I5Q3UXkGd0
+
+
+childrens book version?
+
+http://nowhereroad.com/cgl/chapter4/
+
+https://docs.google.com/document/d/1kie5p3KdI7TZ24OFazavRVMygazR0T4tBh3VLASqrg0/edit
+
+
+deck of cards - https://www.makeplayingcards.com/
+
+
+computer graphics tees?
+
+merch store like https://www.gianthugs.com/collections/ryan?page=2
+
+https://www.explainthatstuff.com/computer-graphics.html
+
+
+look into graphics gems for more info of what to write?
