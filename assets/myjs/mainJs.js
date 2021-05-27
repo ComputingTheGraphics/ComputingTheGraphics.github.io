@@ -39,6 +39,30 @@ function goToPage(postName) {
     hideSearch(true);
 }
 
+function createPostsMenu() {
+    const folderFormat = "<li><span class='opener'>TITLE</span><ul>POSTS</ul></li>\n"
+    const postFormat = "<li><a href='javascript:void(0)' onclick=\"goToPage('POST_TITLE')\">POST_TITLE</a></li>\n"
+    var postsText = "<h4>Posts</h4>\n"
+
+    var directories = []
+    for (dir in directories) {
+        var folderString = "" + folderFormat;
+        folderString.replace("TITLE", dir);
+
+        var posts = []
+        var postsString = ""
+        for (post in posts) {
+            var individualPost = "" + postFormat;
+            individualPost.replace("POST_TITLE", post);
+            postsString += postFormat;
+        }
+        
+        postsText += folderString 
+    }
+
+    document.getElementById('menu').innerHTML = postsText;
+}
+
 function getDocHeight(doc) {
     doc = doc || document;
     // stackoverflow.com/questions/1145850/
@@ -65,7 +89,7 @@ function urlUpdated() {
 	var post = getValueFromUrl('post');
     console.log('post is '+post)
 	if (post == undefined) {
-		post = 'welcome';
+		post = 'Overview/welcome';
 	}
 	var mdHtmlPageIFrame = document.getElementById("mainloader");
     mdHtmlPageIFrame.src = '/posts/'+post+'.html'

@@ -22,7 +22,7 @@
 	    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
 		<!-- <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
 	</head>
-	<body class="is-preload" onload="urlUpdated()">
+	<body class="is-preload" onload="urlUpdated(); createPostsMenu();">
 
 		<!-- Wrapper -->
 		<div id="wrapper">
@@ -68,43 +68,23 @@
 							<li>
 								<span class="opener">Overview</span>
 								<ul>
-									<li><a href="javascript:void(0)"
-										onclick="goToPage('welcome')">Welcome</a>
-									</li>
+									<li><a href="javascript:void(0)" onclick="goToPage('welcome')">Welcome</a></li>
 								</ul>
 							</li>
 							<li>
 								<span class="opener">Behavior-based Simulation</span>
 								<ul>
-									<!-- <li><a href="javascript:void(0)" onclick="goToPage('emergent_behavior')">
-										Emergent Behavior
-									</a></li>
-									<li><a href="javascript:void(0)" onclick="goToPage('boids')">
-										Boids
-									</a></li>
-									<li><a href="javascript:void(0)" onclick="goToPage('biocrowds')">
-										BioCrowds
-									</a></li> -->
-									<li><a href="javascript:void(0)" onclick="goToPage('mkdownTest')">
-										MarkDownTest
-									</a></li>
-									<li><a href="javascript:void(0)" onclick="goToPage('mkdownTest')">
-										MediumTest
-									</a></li>
+									<li><a href="javascript:void(0)" onclick="goToPage('emergent_behavior')">Emergent Behavior</a></li>
+									<li><a href="javascript:void(0)" onclick="goToPage('boids')">Boids</a></li>
+									<li><a href="javascript:void(0)" onclick="goToPage('biocrowds')">BioCrowds</a></li>
 								</ul>
 							
 							<li>
-								<span class="opener">Miscellaneous</span>
+								<span class="opener">Website Info</span>
 								<ul>
-									<li>
-										<a href="javascript:void(0)" onclick="goToPage('about')">About the Author</a>
-									</li>
-									<li>
-										<a href="javascript:void(0)" onclick="goToPage('copyright')">Copyright and Code Use</a>
-									</li>
-									<li>
-										<a href="javascript:void(0)" onclick="goToPage('resources')">Helpful Resources</a>
-									</li>
+									<li><a href="javascript:void(0)" onclick="goToPage('about')">About the Author</a></li>
+									<li><a href="javascript:void(0)" onclick="goToPage('copyright')">Copyright and Code Use</a></li>
+									<li><a href="javascript:void(0)" onclick="goToPage('resources')">Helpful Resources</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -114,9 +94,9 @@
 						<h4>Get in touch</h4>
 						<button id="discussions_btn" class="fit" onclick="parent.open('https://github.com/ComputingTheGraphics/ComputingTheGraphics.github.io/discussions')">Comments/Questions?</button>
                         <br/><br/>
-                        <button id="contribute_btn" class="fit" onclick="goToPage('contribute.md')">Contribute</button>
+                        <button id="contribute_btn" class="fit" onclick="parent.open('https://github.com/ComputingTheGraphics/ComputingTheGraphics.github.io/blob/master/posts/Overview/contributions.md')">Contribute</button>
                         <br/><br/>
-                        <button id="github_btn" class="fit" onclick="parent.open('https://www.github.com/ComputingTheGraphics')">Github Repo</button>
+                        <button id="github_btn" class="fit" onclick="parent.open('https://www.github.com/ComputingTheGraphics')">Github</button>
 					</section>
 
 					<!-- Footer -->
