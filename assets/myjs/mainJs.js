@@ -39,10 +39,41 @@ function goToPage(postName) {
     hideSearch(true);
 }
 
+// TODO - handle these appropriately!!!
+function readVisitorCounter() {
+    
+}
+
+function updateVisitorCounter() {
+    var fs = require('fs');
+    text = fs.readFile('./count.txt', funciton(err, data) {
+        if (err) {
+            return console.error(err);
+        }
+        console.log("Asynchronous read: " + data.toString());
+        return data.toString();
+    }
+    console.log(text);
+    count = 1 + parseInt(text)
+   
+    fs.writeFile('./count.txt', ''+count, (err) => {
+        if (err) throw err;
+        console.log('It's saved!');
+    });
+}
+
 function createPostsMenu() {
+    console.log('CREATING POSTS MENU')
     const folderFormat = "<li><span class='opener'>TITLE</span><ul>POSTS</ul></li>\n"
     const postFormat = "<li><a href='javascript:void(0)' onclick=\"goToPage('POST_TITLE')\">POST_TITLE</a></li>\n"
     var postsText = "<h4>Posts</h4>\n"
+
+    // https://docs.github.com/en/rest/reference/git#trees
+    await octokit.request('GET /repos/{owner}/{repo}/git/trees/{tree_sha}', {
+        owner: 'ComputingTheGraphics',
+        repo: 'ComputingTheGraphics.github.io',
+        tree_sha: 'TODO-------'
+    })
 
     var directories = []
     for (dir in directories) {
@@ -57,8 +88,10 @@ function createPostsMenu() {
             postsString += postFormat;
         }
         
+        folderString.replace("POSTS", postsString);
         postsText += folderString 
     }
+    console.log(postsText)
 
     document.getElementById('menu').innerHTML = postsText;
 }
