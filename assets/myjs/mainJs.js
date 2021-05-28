@@ -39,29 +39,6 @@ function goToPage(postName) {
     hideSearch(true);
 }
 
-// TODO - handle these appropriately!!!
-function readVisitorCounter() {
-    
-}
-
-function updateVisitorCounter() {
-    var fs = require('fs');
-    text = fs.readFile('./count.txt', funciton(err, data) {
-        if (err) {
-            return console.error(err);
-        }
-        console.log("Asynchronous read: " + data.toString());
-        return data.toString();
-    }
-    console.log(text);
-    count = 1 + parseInt(text)
-   
-    fs.writeFile('./count.txt', ''+count, (err) => {
-        if (err) throw err;
-        console.log('It's saved!');
-    });
-}
-
 function createPostsMenu() {
     console.log('CREATING POSTS MENU')
     const folderFormat = "<li><span class='opener'>TITLE</span><ul>POSTS</ul></li>\n"
