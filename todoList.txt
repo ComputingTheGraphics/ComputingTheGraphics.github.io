@@ -1,9 +1,10 @@
 [x] make all files md for writing
 [ ] make searching work on md files so dont need other plugin
 [ ] clean up rest of site (add more todos for this)
-[ ] make dynamic loading of main posts drop down
+[x] make dynamic loading of main posts drop down - simple
+[ ] make dynamic loading of main posts drop down - change _order.txt to non private file then dynamically load there?? is that kind of extra dynamic searching and loading worth it compared to loading one file and writing from there :////?
 [ ] make visitor counter
-[ ] make contributions easy to do etc
+[x] make contributions easy to do etc
 [ ] make readme.md and overview/welcome.md the same page info
 
 "nothing's real and everything matters - computer graphics and the brain"
