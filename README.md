@@ -11,6 +11,12 @@ Though a general understanding of coding is not required, these explanations and
 [ComputingTheGraphics](https://www.computingthegraphics.com)
 
 ## Current and Future Posts:
+
+- Check out our project page issues section to see upcoming post ideas
+- Current posts can be found in their associated directory of the posts folder
+- Content includes the following tags:
+
+TODO - remove the below to a different location
 TODO - UPDATE THIS TO BETTER REFLECT CONTENT OR JUST REMOVE ENTIRELY
 - What is Computer Graphics?
   - Introduction
@@ -46,10 +52,7 @@ TODO - UPDATE THIS TO BETTER REFLECT CONTENT OR JUST REMOVE ENTIRELY
   - for rendering
   - image recognition
   - ...
-  - Lots of research is being done here - more information coming soon!
-  
-## Some cool project tutorials/ideas to get started!
-INFO COMING SOON
+  - Lots of research is being done here - more information coming soon! 
 
 ## Helpful Resources:
 These are generic helpful resources for getting started in Graphics. <br> More detailed resources will be provided with each post.
@@ -61,6 +64,3 @@ These are generic helpful resources for getting started in Graphics. <br> More d
 - [WebGL Documentation](https://www.khronos.org/webgl/)
 - [Does your browser support WebGL?](https://get.webgl.org/)
 <br> more to come soon
-
-### More Information
-[About the Author](hannahbollar.com/About.html)
