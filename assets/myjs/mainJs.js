@@ -29,6 +29,26 @@ function validUrl(url) {
 
 
 function readFileInJS(filepath) {
+    console.log('-------- reading filepath: '+filepath)
+    console.log('-READJSFILEWITHHTTP')
+
+    filepath = 'https://www.computingthegraphics.com/README.md';
+
+    var http = new XMLHttpRequest();
+    http.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(http.responseText);
+            // document.getElementById("demo").innerHTML = this.responseText;
+        }
+    };
+
+    http.open("GET", filepath, true);
+    http.send();
+    // console.log(xmlhttp.responseText);
+
+    return;
+
+    /*
     fileparts = []
 	let file = new File(fileparts, fileName=filepath);
     let reader = new FileReader();
@@ -43,7 +63,7 @@ function readFileInJS(filepath) {
     console.log('reading the errors')
     reader.onerror = function() {
         console.log(reader.error);
-    };
+    };*/
 }
 
 function goToPage(postName) {
@@ -67,7 +87,7 @@ function createPostsMenu() {
 
     // TODO - need a way to get the python posts directory setup to here....
     // maybe have it auto write into the javascript file...
-    readFileInJS('README.md')
+    readFileInJS("https://www.computingthegraphics.com/README.html")
 
     var directories = []
     for (dir in directories) {
@@ -87,7 +107,7 @@ function createPostsMenu() {
     }
     console.log(postsText)
 
-    document.getElementById('menu').innerHTML = postsText;
+    document.getElementById("menu").innerHTML = postsText;
 }
 
 function getDocHeight(doc) {
@@ -118,8 +138,7 @@ function urlUpdated() {
 	if (post == undefined || post == '') {
 		post = 'Overview/welcome';
 	}
-    var mdHtmlPageIFrame = document.getElementById("mainloader");
-    mdHtmlPageIFrame.src = '/posts/'+post+'.html'
+    document.getElementById("mainloader").src = '/posts/'+post+'.html'
 
     // Searching?
 	searchVal = getValueFromUrl('searchtext');
