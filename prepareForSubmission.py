@@ -49,10 +49,10 @@ def updatePostsMenu():
 ================================================================================================="""
         for key in postsMenu:
             print('{}'.format(key))
-            text += '{}'.format(key)
+            text += '\n{}'.format(key)
             for post in postsMenu[key]:
                 print('\t{}'.format(post))
-                text += '\t{}'.format(key)
+                text += '\n\t{}'.format(key)
         f.truncate(0);
         f.seek(0);
         f.write(text);
@@ -103,16 +103,19 @@ You are added to the larger contributors file by your @githubHandle. Please note
         valid = response in ('Y', 'y', 'yes', 'YES')
    
     with open('CONTRIBUTORS.md', 'r+') as f:
-        contents = f.read()
-        contentsList = contents.split("\n")
+        contentsList = f.readlines()
         try:
             # Remove last empty line
             finalContentsList = contentsList[:-1]
         except:
             # This will only be thrown if the file was missing for some reason and auto created.
             pass
-        if gitHandle in finalContentsList:
-            print('''\
+        justHandlesList = [ 
+                item[item.index('[')+1 : item.index(']')]
+                for item in finalContentsList 
+                if item.startswith('*') ]
+        if gitHandle in justHandlesList:
+            print('''\ \n
 You were already noted as a contributor. Thanks for the engagement!!!
 
 IF YOU THINK THIS IS A MISTAKE, NOTE IT AS AN ISSUE ON THE REPO OR IN THE DISCUSSION FORUM''')
