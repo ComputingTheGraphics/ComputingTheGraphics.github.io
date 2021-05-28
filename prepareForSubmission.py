@@ -15,36 +15,31 @@ def updatePostsMenu():
     postsMenu = OrderedDict()
 
     for root, dirs, files in os.walk(r'{}'.format(directoryOfFile)):
+        if '/posts' not in root:
+            continue
+        
         print('root is: {}'.format(root))
         print('-- dirs is : {}'.format(dirs))
         print('-- files is : {}'.format(files))
 
-        if '/posts' not in root:
-            continue
-
-        print('ROOT REVERSE: {}'.format(root[::-1]))
-        index = (root[::-1]).index('/') + 1
+        index = (root[::-1]).index('/')
         currDir = root[-index:]
-        print(currDir)
-        if currDir == '/posts':
+        if currDir == 'posts':
             print('------ A')
             # top level posts folder
             order = getOrderFromTxt(root + '/_order.txt')
-            print(order)
-            print(dirs)
             confirmOrderIsValid(order, dirs, root + '/_order.txt')
         else:
             print('------ B')
-            print('GENERIC NAMES FOUND:')
-            for name in files:
-                print('---- name: {}'.format(name))
-        
             # sub level in posts folder
+            print('root + /_order.txt is : {}'.format(root + '/_order.txt'))
             order = getOrderFromTxt(root + '/_order.txt')
             print('order is : {}'.format(order))
             for name in order:
-                postsMenu[currDir] = [name] if currDir not in postsMenu else postsMenu[currDir] + name
-                print('---- postsMenu[{}] = {}'.format(currDir, postsMenu[currDir]))
+                postsMenu[currDir] = \
+                    [name] if currDir not in postsMenu \
+                    else postsMenu[currDir] + [name]
+            print('---- postsMenu[{}] = {}'.format(currDir, postsMenu[currDir]))
 
 def getOrderFromTxt(filepath):
     print('getting order from _order.txt')
