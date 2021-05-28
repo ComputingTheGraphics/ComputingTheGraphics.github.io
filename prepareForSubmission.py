@@ -43,6 +43,8 @@ def updatePostsMenu():
         for post in postsMenu[key]:
             print('\t{}'.format(post))
 
+    # write to index.html file for the div - this can be iffy if the user still has this open.
+
 def getOrderFromTxt(filepath):
     with open(filepath) as f:
         contents = f.read()

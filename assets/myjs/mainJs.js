@@ -27,6 +27,25 @@ function validUrl(url) {
     return http.status != 404;
 }
 
+
+function readFileInJS(filepath) {
+    fileparts = []
+	let file = new File(fileparts, fileName=filepath);
+    let reader = new FileReader();
+
+    reader.readAsText(file);
+    
+    console.log('reading the file')
+    reader.onload = function() {
+        console.log(reader.result);
+    };
+
+    console.log('reading the errors')
+    reader.onerror = function() {
+        console.log(reader.error);
+    };
+}
+
 function goToPage(postName) {
     console.log(postName)
 
@@ -40,17 +59,15 @@ function goToPage(postName) {
 }
 
 function createPostsMenu() {
-    console.log('CREATING POSTS MENU')
+    console.log('CREATING POSTS MENU');
+    
     const folderFormat = "<li><span class='opener'>TITLE</span><ul>POSTS</ul></li>\n"
     const postFormat = "<li><a href='javascript:void(0)' onclick=\"goToPage('POST_TITLE')\">POST_TITLE</a></li>\n"
     var postsText = "<h4>Posts</h4>\n"
 
-    // https://docs.github.com/en/rest/reference/git#trees
-    await octokit.request('GET /repos/{owner}/{repo}/git/trees/{tree_sha}', {
-        owner: 'ComputingTheGraphics',
-        repo: 'ComputingTheGraphics.github.io',
-        tree_sha: 'TODO-------'
-    })
+    // TODO - need a way to get the python posts directory setup to here....
+    // maybe have it auto write into the javascript file...
+    readFileInJS('README.md')
 
     var directories = []
     for (dir in directories) {
@@ -95,13 +112,13 @@ function setIframeHeight(id) {
 
 function urlUpdated() {
     // Loading a post?
-    console.log('load up a post////')
+    console.log('load up a post')
 	var post = getValueFromUrl('post');
     console.log('post is '+post)
-	if (post == undefined) {
+	if (post == undefined || post == '') {
 		post = 'Overview/welcome';
 	}
-	var mdHtmlPageIFrame = document.getElementById("mainloader");
+    var mdHtmlPageIFrame = document.getElementById("mainloader");
     mdHtmlPageIFrame.src = '/posts/'+post+'.html'
 
     // Searching?
@@ -143,7 +160,7 @@ var flexsearch = new FlexSearch({
     tokenize: "full",
 });
 function setupSearch() {
-	loadAllPosts(flexsearch);
+	// loadAllPosts(flexsearch);
 	console.log('setup search');
 	console.log('setup search runs everytime the page is reloaded - is this okay?');
 } 
