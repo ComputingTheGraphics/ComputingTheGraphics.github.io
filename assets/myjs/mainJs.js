@@ -118,7 +118,10 @@ function urlUpdated() {
 	}
     document.getElementById("mainloader").src = '/posts/'+post+'.html'
     console.log('heeerrrreeee');
-    console.log(document.getElementById('mainloader').innerHTML);
+    console.log('A');
+    console.log(document.getElementById("mainloader").innerHTML);
+    console.log('B');
+    console.log(document.getElementById("mainloader").src);
     console.log('theeeerrree');
 
     // Searching?
