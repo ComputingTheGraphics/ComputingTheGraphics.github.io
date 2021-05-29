@@ -25,9 +25,7 @@ function createPostsMenu() {
     var http = new XMLHttpRequest();
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
             createPostsMenuFromText(this.responseText);
-            return
         }
     };
 
@@ -119,6 +117,7 @@ function urlUpdated() {
 		post = 'Overview/welcome';
 	}
     document.getElementById("mainloader").src = '/posts/'+post+'.html'
+    console.log(document.getElementById('mainloader').innerHTML);
 
     // Searching?
 	searchVal = getValueFromUrl('searchtext');
