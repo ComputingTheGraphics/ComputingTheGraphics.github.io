@@ -117,7 +117,9 @@ function urlUpdated() {
 		post = 'Overview/welcome';
 	}
     document.getElementById("mainloader").src = '/posts/'+post+'.html'
+    console.log('heeerrrreeee');
     console.log(document.getElementById('mainloader').innerHTML);
+    console.log('theeeerrree');
 
     // Searching?
 	searchVal = getValueFromUrl('searchtext');
