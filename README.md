@@ -6,9 +6,7 @@ Have comments, feedback, your own article, and/or topic ideas? Checkout the [con
 
 ## Prerequisites:
 
-- Though a general understanding of coding is not required, these explanations will be in pseudocode or C++/JavaScript here and there.
-- Additionally, a beginning understanding of linear algebra also helps.
-- All articles will be written assuming minimal knowledge and will have relevant resources listed at the bottom.
+Though a general understanding of coding is not required, these explanations will be in pseudocode or C++/JavaScript here and there. Additionally, a beginning understanding of linear algebra also helps. All articles will be written assuming minimal knowledge and will have relevant resources listed at the bottom to aid the reader.
 
 ## Website version of this for easier access:
 [COMPUTINGTHEGRAPHICS.COM](https://www.computingthegraphics.com)
