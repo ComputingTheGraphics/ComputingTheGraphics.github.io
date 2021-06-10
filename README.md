@@ -11,13 +11,9 @@ Though a general understanding of coding is not required, these explanations and
 [ComputingTheGraphics](https://www.computingthegraphics.com)
 
 ## Current and Future Posts:
-
 - Check out our project page issues section to see upcoming post ideas
 - Current posts can be found in their associated directory of the posts folder
-- Content includes the following tags:
-
-TODO - remove the below to a different location
-TODO - UPDATE THIS TO BETTER REFLECT CONTENT OR JUST REMOVE ENTIRELY
+<!--
 - What is Computer Graphics?
   - Introduction
   - Helpful Libraries (STL, glm, Eigen, glfw, bullet, glut, ogre, ...)
@@ -63,4 +59,4 @@ These are generic helpful resources for getting started in Graphics. <br> More d
 - [OpenGL Documentation](https://www.khronos.org/registry/OpenGL-Refpages/)
 - [WebGL Documentation](https://www.khronos.org/webgl/)
 - [Does your browser support WebGL?](https://get.webgl.org/)
-<br> more to come soon
+<br> more to come soon -->
