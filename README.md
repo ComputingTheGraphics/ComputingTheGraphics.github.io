@@ -1,6 +1,6 @@
 # So You Want to Learn Computer Graphics?
 
-*Your how-to guide for math/algorithmic knowledge and hot topics in graphics, gaming, vr, animation, and more!*
+*Your how-to guide of algorithmic knowledge for hot topics in graphics, gaming, vr, animation, and more!*
 
 Have comments, feedback, your own article, and/or topic ideas? Checkout the [contributions page](posts/Overview/contributions.md)!
 
