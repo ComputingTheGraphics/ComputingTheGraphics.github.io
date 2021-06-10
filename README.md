@@ -1,19 +1,20 @@
 # So You Want to Learn Computer Graphics?
-<b> Your how-to guide for general knowledge and hot topics </b>
 
-Just hoping to share a love for learning and an interest in graphics, gaming, vr, animation, and anything to do with the 3D world. If you have comments, feedback, and/or topic ideas - feel free to post an issue!
+*Your how-to guide for general knowledge and hot topics in graphics, gaming, vr, animation, and more!*
+
+Have comments, feedback, your own article, and/or topic ideas? Checkout the [contributions page](posts/Overview/contributions.md)!
 
 ## Prerequisites:
 
-Though a general understanding of coding is not required, these explanations and tutorials will be in pseudocode and/or C++ with some JavaScript here and there. Additionally, a beginning understanding of linear algebra also helps.
+Though a general understanding of coding is not required, these explanations will be in pseudocode or C++/JavaScript here and there. Additionally, a beginning understanding of linear algebra also helps. Though this is the case, all articles will be written assuming minimal knowledge and will have relevant resources listed at the bottom.
 
 ## Website version of this for easier access:
-[ComputingTheGraphics](https://www.computingthegraphics.com)
+[COMPUTINGTHEGRAPHICS.COM](https://www.computingthegraphics.com)
 
+<!--
 ## Current and Future Posts:
 - Check out our project page issues section to see upcoming post ideas
 - Current posts can be found in their associated directory of the posts folder
-<!--
 - What is Computer Graphics?
   - Introduction
   - Helpful Libraries (STL, glm, Eigen, glfw, bullet, glut, ogre, ...)
